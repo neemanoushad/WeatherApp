@@ -7,12 +7,10 @@ const WeekInfo = () => {
   const [selectedCard, setSelectedCard] = useState(0);
 
   const updateCurrent = () => {
-    return (
-      dispatch({
-        type: 'SET_CURRENT',
-        payload: daily[selectedCard]
-      })
-    );
+    dispatch({
+      type: 'SET_CURRENT',
+      payload: daily[selectedCard]
+    });
   };
 
   useEffect(() => {
@@ -21,25 +19,21 @@ const WeekInfo = () => {
   }, [daily, selectedCard]);
 
   return (
-    <div className="bg-black bg-opacity-20 rounded-lg mb-6">
-      <ul className="flex flex-wrap justify-center list-none p-0 my-2.5">
+    <div className="bg-white bg-opacity-20 rounded-lg mb-6 p-4 mt-4">
+      <ul className="flex flex-wrap justify-center gap-4">
         {
-          daily && daily.length > 0 ? daily.map((item, index) => {
-            if (index < 7) {
-              return (
-                <SingleCardComponents
-                  className={`m-2 p-4 rounded-lg cursor-pointer transition transform hover:scale-105 ${index === selectedCard ? "bg-gray-200 scale-105" : "bg-yellow hover:bg-gray-100"}`}
-                  onClick={() => {
-                    setSelectedCard(index);
-                    updateCurrent();
-                  }}
-                  item={item}
-                  key={index}
-                />
-              );
-            }
-            return null;
-          }) : null
+          daily && daily.length > 0 ? daily.slice(0, 7).map((item, index) => (
+            <li key={index} className={`w-full sm:w-1/2 md:w-1/4 lg:w-1/6`}>
+              <SingleCardComponents
+                className={`m-2 p-4 rounded-lg cursor-pointer transition-transform duration-300 ease-in-out ${index === selectedCard ? "bg-gray-200 scale-105" : "bg-yellow hover:bg-gray-100"}`}
+                onClick={() => {
+                  setSelectedCard(index);
+                  updateCurrent();
+                }}
+                item={item}
+              />
+            </li>
+          )) : null
         }
       </ul>
     </div>

@@ -1,29 +1,27 @@
-import React from 'react'
+import React from 'react';
 import wallpaper from '../../Asset/wallpaper.jpg';
-import ChooseState from '../ChooseStae/ChooseState'
+import ChooseState from '../ChooseStae/ChooseState';
 import WeekInfo from '../WeekInfo/WeekInfo';
-import LeftSide from '../Left/LeftSide'
+import LeftSide from '../Left/LeftSide';
 
 function Home() {
   return (
-    <div className="homewrap flex items-center justify-center h-screen bg-cover bg-center" 
-    style={{ backgroundImage: `url(${wallpaper})` }}>
-<div className="weatherSection flex rounded-[25px] shadow-[4px_6px_6px_7px_rgba(0,0,0,0.1)] text-white m-5 h-max bg-black/10 border-2 border-black p-0">
-   <LeftSide/>
+    <div
+      className="homewrap flex items-center justify-center min-h-screen bg-cover bg-center"
+      style={{ backgroundImage: `url(${wallpaper})` }}
+    >
+      <div
+        className="weatherSection flex flex-col md:flex-row rounded-lg shadow-lg text-white m-4 md:m-8 h-auto bg-black/20 border-2 border-black p-4 md:p-6"
+      >
+        <LeftSide />
 
-    <div className="rightSide text-black relative float-left h-full pt-6 pr-5">
-
-        <ChooseState/>
-        <WeekInfo/>
-      
+        <div className="rightSide text-black flex-1 pt-4 md:pt-6 pr-4 md:pr-6">
+          <ChooseState />
+          <WeekInfo />
+        </div>
+      </div>
     </div>
-
-</div>
-
-
-
-    </div>
-  )
+  );
 }
 
-export default Home
+export default Home;
